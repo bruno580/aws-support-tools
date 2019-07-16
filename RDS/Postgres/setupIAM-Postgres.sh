@@ -69,7 +69,7 @@ cat << EOF > rds-iam-role.json
   }
 }
 EOF
-ROLE_ARN="arn:aws:iam::${ACC_ID}:role/${POLICY_NAME}"
+ROLE_ARN="arn:aws:iam::${ACC_ID}:role/${ROLE_NAME}"
 return 0
 }
 createIAMPolicy() {
@@ -138,6 +138,8 @@ then
 else
     echo ''
     echo "*** Environment configured successfully ***"
+    echo ''
+    echo "Make sure you add the IAM users to be authenticated to the role ${ROLE_NAME}."
     echo ''
     echo "Please connect with the master user to your database and execute the following commands: "
     echo "create user ${IAM_USER} with login;"
